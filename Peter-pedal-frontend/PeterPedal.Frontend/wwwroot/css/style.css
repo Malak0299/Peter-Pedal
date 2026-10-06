@@ -1,0 +1,67 @@
+:root {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5b6168;
+  --accent: #1f6f5c;
+  --danger: #b42318;
+  --border: #d9d6cf;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header {
+  background: var(--accent);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+header h1 { font-size: 1.25rem; margin: 0; }
+header nav { display: flex; gap: 1rem; }
+header nav a { color: #fff; text-decoration: none; opacity: 0.85; }
+header nav a:hover, header nav a[aria-current="page"] { opacity: 1; text-decoration: underline; }
+
+main { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+
+table { width: 100%; border-collapse: collapse; background: var(--surface); margin-bottom: 1.5rem; }
+th, td { text-align: left; vertical-align: middle; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+
+[hidden] { display: none !important; }
+
+form { display: grid; gap: 0.75rem; max-width: 420px; background: var(--surface); padding: 1rem; border: 1px solid var(--border); }
+label { display: grid; gap: 0.25rem; font-weight: 600; font-size: 0.9rem; }
+input, select, textarea { font: inherit; padding: 0.4rem 0.5rem; border: 1px solid var(--border); border-radius: 4px; }
+
+button {
+  font: inherit;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button.secondary { background: transparent; color: var(--accent); }
+button.danger { background: var(--danger); border-color: var(--danger); }
+
+.message { padding: 0.75rem 1rem; border-left: 4px solid var(--accent); background: var(--surface); }
+.message.error { border-left-color: var(--danger); color: var(--danger); }
+
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; background: var(--surface); padding: 1rem; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+
+div.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }

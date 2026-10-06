@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kunder — Peter Pedal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Peter Pedals Cykelværksted</h1>
+    <nav>
+      <a href="sager.html">Sager</a>
+      <a href="kunder.html" aria-current="page">Kunder</a>
+      <a href="reservedele.html">Reservedele</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Kunder</h2>
+    <p id="message" class="message" hidden></p>
+
+    <table>
+      <thead>
+        <tr><th>Fornavn</th><th>Efternavn</th><th>Telefon</th><th></th></tr>
+      </thead>
+      <tbody id="customer-rows"></tbody>
+    </table>
+
+    <h3 id="form-title">Ny kunde</h3>
+    <!-- No "required" attributes on purpose: the API validates and returns 400. -->
+    <form id="customer-form">
+      <input type="hidden" id="customer-id">
+      <label>Fornavn <input id="first-name"></label>
+      <label>Efternavn <input id="last-name"></label>
+      <label>Telefon <input id="phone"></label>
+      <div class="actions">
+        <button type="submit">Gem</button>
+        <button type="button" id="cancel-edit" class="secondary" hidden>Annullér</button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="js/kunder.js"></script>
+</body>
+</html>

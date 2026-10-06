@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservedele — Peter Pedal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Peter Pedals Cykelværksted</h1>
+    <nav>
+      <a href="sager.html">Sager</a>
+      <a href="kunder.html">Kunder</a>
+      <a href="reservedele.html" aria-current="page">Reservedele</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Reservedele</h2>
+    <p id="message" class="message" hidden></p>
+
+    <table>
+      <thead>
+        <tr><th>Navn</th><th>Pris</th><th></th></tr>
+      </thead>
+      <tbody id="part-rows"></tbody>
+    </table>
+
+    <h3 id="form-title">Ny reservedel</h3>
+    <form id="part-form">
+      <input type="hidden" id="part-id">
+      <label>Navn <input id="name"></label>
+      <label>Pris (kr, ekskl. avance og moms) <input id="price" type="number" step="0.01" min="0"></label>
+      <div class="actions">
+        <button type="submit">Gem</button>
+        <button type="button" id="cancel-edit" class="secondary" hidden>Annullér</button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="js/reservedele.js"></script>
+</body>
+</html>

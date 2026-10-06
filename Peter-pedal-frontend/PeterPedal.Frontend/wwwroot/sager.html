@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sager — Peter Pedal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Peter Pedals Cykelværksted</h1>
+    <nav>
+      <a href="sager.html" aria-current="page">Sager</a>
+      <a href="kunder.html">Kunder</a>
+      <a href="reservedele.html">Reservedele</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Reparationssager</h2>
+    <p id="message" class="message" hidden></p>
+
+    <table>
+      <thead>
+        <tr><th>Stelnummer</th><th>Kunde</th><th>Status</th><th>Pris</th></tr>
+      </thead>
+      <tbody id="case-rows"></tbody>
+    </table>
+
+    <section id="detail" hidden>
+      <h3>Sag <span id="detail-title"></span></h3>
+      <dl>
+        <dt>Kunde</dt><dd id="detail-customer"></dd>
+        <dt>Problem</dt><dd id="detail-problem"></dd>
+        <dt>Status</dt><dd id="detail-status"></dd>
+        <dt>Pris</dt><dd id="detail-price"></dd>
+        <dt>Reservedele</dt><dd><ul id="detail-parts"></ul></dd>
+      </dl>
+      <div class="actions">
+        <select id="part-select"></select>
+        <button type="button" id="add-part">Tilføj reservedel</button>
+        <button type="button" id="calculate">Beregn tilbud</button>
+      </div>
+      <div class="actions">
+        <select id="status-select"></select>
+        <button type="button" id="save-status">Gem status</button>
+        <button type="button" id="delete-case" class="danger">Slet sag</button>
+      </div>
+    </section>
+
+    <h3>Ny sag</h3>
+    <form id="case-form">
+      <label>Kunde <select id="customer"></select></label>
+      <label>Stelnummer <input id="frame-number"></label>
+      <label>Problem <textarea id="problem" rows="3"></textarea></label>
+      <div class="actions">
+        <button type="submit">Opret sag</button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="js/sager.js"></script>
+</body>
+</html>
