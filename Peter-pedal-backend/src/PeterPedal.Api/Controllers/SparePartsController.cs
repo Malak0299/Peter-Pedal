@@ -12,23 +12,32 @@ public class SparePartsController : ControllerBase
     private readonly PeterPedalDbContext _db;
 
     public SparePartsController(PeterPedalDbContext db) => _db = db;
-
+    
     [HttpGet]
     public async Task<List<SparePart>> GetAll() =>
         await _db.SpareParts.OrderBy(p => p.Id).ToListAsync();
-
+    
     [HttpGet("{id}")]
     public async Task<ActionResult<SparePart>> GetById(int id)
     {
         // TODO: Return the spare part with the given id, or 404 Not Found.
-        throw new NotImplementedException();
+        var spareParts = await _db.SpareParts.FindAsync(id);
+
+        if (spareParts == null)
+            return NotFound();
+        
+        return spareParts; 
     }
 
     [HttpPost]
     public async Task<ActionResult<SparePart>> Create(SparePart part)
     {
         // TODO: Save the new spare part and return 201 Created.
-        throw new NotImplementedException();
+        _db.SpareParts.Add(part);
+        await _db.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetById), new {id = part.Id}, part);
+        
     }
 
     [HttpPut("{id}")]
@@ -37,7 +46,7 @@ public class SparePartsController : ControllerBase
         // TODO: Update name and price and return the spare part, or 404 Not Found.
         throw new NotImplementedException();
     }
-
+    
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
