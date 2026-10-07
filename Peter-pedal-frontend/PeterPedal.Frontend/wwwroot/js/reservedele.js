@@ -52,7 +52,8 @@ function toRow(part) {
 
 // GET /api/spareparts/{id} and fill the form with the answer.
 async function startEdit(id) {
-  // TODO: GET /api/spareparts/{id} with get() from rest.js.
+  //GET /api/spareparts/{id} with get() from rest.js.
+  const part = await get(`/api/spareparts/${id}`);
   idField.value = part.id;
   nameField.value = part.name;
   priceField.value = part.price;
@@ -68,7 +69,8 @@ function resetForm() {
 }
 
 async function remove(id) {
-  // TODO: DELETE /api/spareparts/{id} with del() from rest.js.
+  //DELETE /api/spareparts/{id} with del() from rest.js.
+  await del(`/api/spareparts/${id}`);
   showMessage('Reservedelen er slettet.');
   await loadParts();
 }
