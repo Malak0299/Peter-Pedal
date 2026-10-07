@@ -20,7 +20,7 @@ public class SparePartsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<SparePart>> GetById(int id)
     {
-        // TODO: Return the spare part with the given id, or 404 Not Found.
+        //Returns the spare part with the given id, or 404 Not Found.
         var spareParts = await _db.SpareParts.FindAsync(id);
 
         if (spareParts == null)
@@ -32,7 +32,7 @@ public class SparePartsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<SparePart>> Create(SparePart part)
     {
-        // TODO: Save the new spare part and return 201 Created.
+        //Saves the new spare part and returns 201 Created.
         _db.SpareParts.Add(part);
         await _db.SaveChangesAsync();
 
@@ -41,16 +41,34 @@ public class SparePartsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<SparePart>> Update(int id, SparePart input)
+    public async Task<ActionResult<SparePart>> Update(int id, SparePart part)
     {
-        // TODO: Update name and price and return the spare part, or 404 Not Found.
-        throw new NotImplementedException();
+        //Updates name and price and returns the spare part, or 404 Not Found.
+        var existing = await _db.SpareParts.FindAsync(id);
+        
+        if (existing == null)
+            return NotFound();
+
+        existing.Name = part.Name;
+        existing.Price = part.Price;
+        await _db.SaveChangesAsync();
+
+        return existing;
     }
     
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        // TODO: Delete the spare part and return 204 No Content, or 404 Not Found.
-        throw new NotImplementedException();
+        //Deletes the spare part and returns 204 No Content, or 404 Not Found.
+        var part = await _db.SpareParts.FindAsync(id);
+
+        if (part == null)
+            return NotFound();
+        
+        _db.SpareParts.Remove(part);
+        await _db.SaveChangesAsync();
+
+        return NoContent();
+        
     }
 }
